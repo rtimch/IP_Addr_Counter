@@ -31,11 +31,11 @@ public class HLL {
     /**See the paper (https://static.googleusercontent.com/media/research.google.com/ru//pubs/archive/40671.pdf)*/
     private double defineAlphaM(int m){
         switch (m) {
-            case 4:
+            case 16:
                 return 0.673;
-            case 5:
+            case 32:
                 return 0.697;
-            case 6:
+            case 64:
                 return 0.709;
             default:
                 return 0.7213 / (1 + 1.079 / m);
@@ -95,7 +95,7 @@ public class HLL {
             return Math.round(E);
         }
         else {
-            estimatedCardinality = -1.0 * ((long) 1 << 32) * Math.log((1 - E) / ((long) 1 << 32));
+            estimatedCardinality = -1.0 * ((long) 1 << 32) * Math.log(1 - (E / ((long) 1 << 32)));
             return Math.round(estimatedCardinality);
         }
     }
